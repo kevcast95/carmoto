@@ -13,7 +13,8 @@ function Auth({idUser,roleUser,dispatch}) {
   last_name :"",
   email: "",
   password: "",
-  confirm_pss: ""
+  confirm_pss: "",
+  role:""
  }
  
  const [registerInfo, setRegisterInfo] = useState(initRegister)
@@ -21,7 +22,7 @@ function Auth({idUser,roleUser,dispatch}) {
   email:"",
   password:"",
  })
- const [role,setRole] = useState("")
+ 
  const roles = ["Administrador", "Conductor", "Cliente"]
  const auth = db_auth.auth()
 
@@ -33,13 +34,26 @@ function Auth({idUser,roleUser,dispatch}) {
   auth.onAuthStateChanged(user=>{
    if (user) {
     console.log("user:", user.uid);
+    initUser(user.uid)
    }
   })
  },[])
+ 
+ async function initUser(userId) {
+  await db.collection("users").onSnapshot((querySnapshot)=>{
+   const docs = []
+   console.log(querySnapshot);
+   querySnapshot.forEach(user => {
+    console.log(user);
+    docs.push({...user.data(),id:user.id})
+   });
+   history.push(docs[0].role.toLocaleLowerCase())
+  })
+ }
 
- async function setUserInfo(){
-  await db.collection('user').doc("roles").collection(role).doc().set(registerInfo)
-  history.push("admin")
+ async function setUserInfo(userId){
+  await db.collection('users').doc(userId).set(registerInfo)
+  history.push(registerInfo.role.toLocaleLowerCase())
   toast('Registro exitoso',{
    type: "success",
    autoClose:2000
@@ -56,18 +70,39 @@ function Auth({idUser,roleUser,dispatch}) {
  }
 
  function toRegister() {
+  if (registerInfo.role==="") {
+   toast('Por favor elegir un rol',{
+    type: "error",
+    autoClose:3000
+   })
+   return
+  }
+
+  if (registerInfo.password==="") {
+   toast('Por favor ingrese contraseña',{
+    type: "error",
+    autoClose:3000
+   })
+   return
+  }
+  
+  if (registerInfo.password!=registerInfo.confirm_pss) {
+   toast('Contraseñas no coinciden',{
+    type: "error",
+    autoClose:3000
+   })
+   return
+  }
   auth
   .createUserWithEmailAndPassword(registerInfo.email, registerInfo.password)
   .then(userCred=>{
-   console.log("registrado",userCred);
-   setUserInfo()
+   console.log("registrado",userCred.user.uid);
+   setUserInfo(userCred.user.uid)
    setRegisterInfo(initRegister)
-   setRole("")
-  }) 
+  })
  }
 
  function toLogin() {
-  console.log("esta aqui");
   auth
   .signInWithEmailAndPassword(loginInfo.email, loginInfo.password)
   .then(userCred=>{
@@ -91,7 +126,11 @@ function Auth({idUser,roleUser,dispatch}) {
       {
        roles.map((rol,index)=>{
         return(
-         <span key={index} className={rol===role?"role_option option_selected":"role_option"} onClick={()=> setRole(rol)}>
+         <span 
+          key={index} 
+          className={rol===registerInfo.role?"role_option option_selected":"role_option"} 
+          onClick={()=> setRegisterInfo({...registerInfo,role:rol})}
+         >
           {rol}
          </span>
         )
@@ -161,8 +200,8 @@ function Auth({idUser,roleUser,dispatch}) {
  )
 }
 const mapStateToProps = (state) => ({
- idUser: state.calendar.idUser,
- roleUser: state.calendar.roleUser
+ idUser: state.carmoto.idUser,
+ roleUser: state.carmoto.roleUser
     
 });
 

@@ -7,6 +7,8 @@ import {ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 import Landing from "./pages/Landing"
 import Admin from "./pages/Administrator"
+import ClientView from './pages/ClientView'
+import DriverView from './pages/DriverView'
 // contraseña firebase AbC123456_
 
 const store = configureStore();
@@ -18,8 +20,14 @@ function App() {
           <Route exact path="/">
             <Landing/>
           </Route>
-          <Route path="/admin">
+          <Route path="/administrador">
             <Admin/>
+          </Route>
+          <Route path="/cliente">
+            <ClientView/>
+          </Route>
+          <Route path="/conductor">
+            <DriverView/>
           </Route>
         </Switch>
         <ToastContainer/>

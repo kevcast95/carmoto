@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import calendar from "./calendarReducer";
+import carmoto from "./carmotoReducer";
 
 const rootReducer = combineReducers({
-  calendar,
+  carmoto,
 });
 
 const appReducer = (state, action) => {
