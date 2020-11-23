@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import {db_auth} from "../../firebase"
-
+import {db_auth, db} from "../../firebase"
+import {toast} from "react-toastify"
+import { connect } from 'react-redux';
+import {useHistory} from "react-router-dom"
 import "./auth.css"
 
-export default function Auth() {
+function Auth({idUser,roleUser,dispatch}) {
+ console.log(idUser,roleUser);
+ let history = useHistory()
  const initRegister = {
   name:"",
   last_name :"",
@@ -20,6 +24,27 @@ export default function Auth() {
  const [role,setRole] = useState("")
  const roles = ["Administrador", "Conductor", "Cliente"]
  const auth = db_auth.auth()
+
+ useEffect(()=>{
+  dispatch({
+   type: 'SET_ID_USER',
+   payload: 12323,
+});
+  auth.onAuthStateChanged(user=>{
+   if (user) {
+    console.log("user:", user.uid);
+   }
+  })
+ },[])
+
+ async function setUserInfo(){
+  await db.collection('user').doc("roles").collection(role).doc().set(registerInfo)
+  history.push("admin")
+  toast('Registro exitoso',{
+   type: "success",
+   autoClose:2000
+  })
+ }
  
  function onChangeRegister (field, value) {
   setRegisterInfo({...registerInfo,[field]:value})
@@ -31,12 +56,13 @@ export default function Auth() {
  }
 
  function toRegister() {
-  console.log("esta aqui");
   auth
   .createUserWithEmailAndPassword(registerInfo.email, registerInfo.password)
   .then(userCred=>{
    console.log("registrado",userCred);
+   setUserInfo()
    setRegisterInfo(initRegister)
+   setRole("")
   }) 
  }
 
@@ -134,3 +160,10 @@ export default function Auth() {
   </div>
  )
 }
+const mapStateToProps = (state) => ({
+ idUser: state.calendar.idUser,
+ roleUser: state.calendar.roleUser
+    
+});
+
+export default connect(mapStateToProps)(Auth)
