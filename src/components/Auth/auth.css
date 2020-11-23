@@ -1,0 +1,142 @@
+.auth_container {
+ width: 60%;
+ height: 500px;
+ box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 10px;
+ border: solid 1px #c9c6c6;
+ margin: 20vh auto;
+ 
+}
+
+.both_forms_container {
+ width: auto;
+ height: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ 
+}
+
+.register_form, .login_form {
+ width: 50%;
+ height: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ border-radius: 0 10px 10px 0px ;
+}
+.register_form > h3, .login_form > h3 {
+ margin: 0px;
+}
+
+.role_group {
+ padding: 20px;
+}
+
+.role_option {
+ width: 50px;
+ padding: 6px;
+ border-radius: 10px;
+ border: solid 1px rgb(27, 185, 106);
+ cursor: pointer;
+ box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+ margin: 3px;
+}
+
+.role_option:hover {
+ color: white;
+ background: rgb(27, 185, 106);
+}
+
+.option_selected {
+ color: white;
+ background: rgb(27, 185, 106);
+ box-shadow: 2px 4px 4px transparent;
+}
+
+.login_form {
+ color: white;
+ background: rgb(27, 185, 106);
+}
+
+.register_form >input, .login_form  > input{
+ width: 60%;
+ height: 25px;
+ outline: none;
+ border: 0.5px solid #C8C7C8;
+ border-radius: 9px;
+ padding: 5px;
+ margin: 5px 0;
+}
+
+.btn_register,.btn_login {
+ width: 120px;
+ text-align: center;
+ box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 9px;
+ padding: 5px;
+ margin: 10px;
+ cursor: pointer;
+}
+
+.btn_register:active,.btn_login:active {
+ box-shadow: 2px 4px 4px transparent;
+}
+
+.btn_register{
+ font-weight: bold;
+ border: solid 2px rgb(27, 185, 106);
+}
+
+.btn_login {
+ font-weight: bold;
+ color: black;
+ background: #e1e4e6;
+}
+
+@media only screen and (max-width: 600px) {
+ .auth_container {
+  width: 100vw;
+  height: 100%;
+  margin: 0;
+ }
+ .both_forms_container {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+ }
+
+ .register_form, .login_form {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 10px 10px 0px ;
+ }
+
+ .register_form >input, .login_form  > input{
+  width: 90%;
+  height: 25px;
+  outline: none;
+  border: 0.5px solid #C8C7C8;
+  border-radius: 9px;
+  padding: 5px;
+  margin: 5px 0;
+ }
+
+ .role_group {
+  padding: 20px;
+ }
+}
+
+
+
+
+
