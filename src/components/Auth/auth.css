@@ -31,17 +31,23 @@
 }
 
 .role_group {
+ width: 80%;
  padding: 20px;
 }
 
+.role_btn_g {
+ display: flex;
+}
+
 .role_option {
- width: 50px;
- padding: 6px;
+ width: 100px;
+ text-align: center;
  border-radius: 10px;
  border: solid 1px rgb(27, 185, 106);
  cursor: pointer;
  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
  margin: 3px;
+ padding: 6px;
 }
 
 .role_option:hover {
@@ -61,13 +67,37 @@
 }
 
 .register_form >input, .login_form  > input{
- width: 60%;
+ width: 70%;
  height: 25px;
  outline: none;
  border: 0.5px solid #C8C7C8;
  border-radius: 9px;
  padding: 5px;
  margin: 5px 0;
+}
+
+.info_car {
+ width: 70%;
+ margin: 0 auto;
+}
+
+.info_car >p {
+ text-align: center;
+ margin: 0;
+}
+
+.carinfo_container {
+ display: flex;
+}
+
+.carinfo_container >input{
+ width: 30%;
+ height: 25px;
+ outline: none;
+ border: 0.5px solid #C8C7C8;
+ border-radius: 9px;
+ padding: 5px;
+ margin: 5px ;
 }
 
 .btn_register,.btn_login {

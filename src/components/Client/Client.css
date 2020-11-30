@@ -1,0 +1,208 @@
+
+
+
+
+.client_container {
+ width: 60%;
+ height: 60%;
+ display: flex;
+ box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 10px;
+ border: solid 1px #c9c6c6;
+ background: #ffffff;
+ margin:  auto;
+}
+
+
+
+
+
+.client_menu_container {
+ width: 25%;
+ height: 100%;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border-radius: 10px 0 0 10px;
+ background: rgb(241, 240, 234);
+ border-right: solid 1px darkgray;
+}
+
+.header_menu_client {
+  width: 100%;
+ height: 150px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ margin: 10px auto;
+}
+
+.header_menu_client > img {
+  width: 60%;
+  border-radius: 10%;
+  border: solid 1px  rgb(27, 185, 106);
+}
+
+.menu_navigate_client {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid grey;
+}
+
+.accepted_msg {
+  width: 90%;
+  text-align: center;
+  background: #ffffff;
+  border: solid 1px  rgb(27, 185, 106);
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px auto;
+
+}
+
+.client_render_info {
+ width: 80%;
+ height: 100%;
+ position: relative;
+}
+/* Map stykle */
+.map-size {
+ width: 100% ;
+ height: 50% ;
+}
+
+.form_service_container {
+ width: 95%;
+ height: 40%;
+ box-shadow:  -2px 4px 6px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 10px;
+ padding: 10px;
+ margin: 10px auto;
+}
+
+.inner_form {
+ width: 100%;
+ display: flex;
+}
+
+
+.inner_form > select {
+ width: 90%;
+ height: 30px;
+ outline: none;
+ border: 0.5px solid #C8C7C8;
+ border-radius: 9px;
+ padding: 5px;
+ margin: 5px ;
+}
+
+.set_address {
+ width: 60%;
+ display: flex;
+ margin: 0 auto;
+}
+
+.set_address > input {
+ width: 40%;
+ height: 15px;
+ outline: none;
+ border: 0.5px solid #C8C7C8;
+ border-radius: 9px;
+ padding: 5px;
+ margin-left: 10px ;
+}
+
+.btn_solicitud,.btn_solicitud_cancele {
+ width: 120px;
+ text-align: center;
+ box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 9px;
+ border: solid 2px rgb(27, 185, 106);
+ padding: 5px;
+ margin: 10px;
+ cursor: pointer;
+ margin-left: 40%;
+}
+
+.btn_solicitud:active,.btn_solicitud_cancele:active {
+ box-shadow: 2px 4px 4px transparent;
+}
+
+.pop_up_wait {
+ width: 100%;
+ height: 100%;
+ position: absolute;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ z-index: 10000;
+ background: rgba(0, 0, 0, 0.25);
+}
+
+.pup_up_info{
+ width: 80%;
+ height: 20%;
+ text-align: center;
+ background: #ffffff;
+ border-radius: 10px;
+ border: solid 2px rgb(27, 185, 106);
+}
+
+.btn_solicitud_cancele {
+ border: solid 2px rgb(241, 60, 60) !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+ .client_container {
+  width: 95%;
+  height: 99%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ }
+
+ .client_menu_container {
+  width: 100%;
+  height: 25%;
+ }
+
+ .header_menu {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  margin: 10px auto;
+}
+
+ .header_menu > img {
+  width: 40%;
+  border-radius: 10%;
+  border: solid 1px rgb(27, 185, 106);
+}
+
+ .client_render_info {
+  width: 100%;
+  height: 75%;
+  position: relative;
+ }
+
+ .form_service_container {
+  width: 85%;
+ }
+
+ .inner_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+ }
+
+ .set_address {
+  width: 100%;
+ }
+
+ .btn_solicitud,.btn_solicitud_cancele {
+  margin-left: 30%;
+ }
+}
